@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace Myleasing.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Document,FirstName,LastName,FixedPhone,CellPhone,Address")] Owner owner)
+        public async Task<IActionResult> Create([Bind("Id")] Owner owner)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +87,7 @@ namespace Myleasing.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Document,FirstName,LastName,FixedPhone,CellPhone,Address")] Owner owner)
+        public async Task<IActionResult> Edit(int id, [Bind("Id")] Owner owner)
         {
             if (id != owner.Id)
             {
