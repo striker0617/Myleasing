@@ -201,5 +201,29 @@ namespace Myleasing.Web.Controllers
         {
             return _dataContext.Owners.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> AddProperty(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+                var owner = await _dataContext.Owners.FindAsync(id);
+                if (owner==null)
+                {
+                return NotFound();
+                }
+
+            var model = new PropertyViewModel
+            {
+                OwnerId=owner.Id,
+                PropertyTypes=GetComboPropertyType()
+            };
+
+            return View(model);
+
+        }
+
+       
     }
 }
